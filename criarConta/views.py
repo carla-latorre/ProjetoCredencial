@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Funcionario
+import bcrypt
 
 def criarConta(request):
     return render(request, 'criarConta/criar_conta.html')
@@ -22,18 +23,14 @@ def criarFuncionario(request):
         #validação caso as senhas digitadas sejam diferentes
         if senha != senha2:
             erros["senha"] = "As senhas não correspondem! Preencha novamente."
-<<<<<<< HEAD
             
-=======
-
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
         if erros:
             context['erros'] = erros
         
         else:
-        
             #gravar os dados caso não tenha ocorrido erros
-            gravaDados = Funcionario(regfuncional=regfuncional, nome=nome,email=email, senha=senha)
+            senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt())
+            gravaDados = Funcionario(regfuncional=regfuncional, nome=nome, email=email, senha=senha_hash.decode('utf-8'))
             gravaDados.save()
             
             

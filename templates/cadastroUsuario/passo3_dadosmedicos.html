@@ -1,20 +1,15 @@
-<<<<<<< HEAD
 {% load static %}
 
-=======
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 <!DOCTYPE html>
 <html>
 	<head>
     	<title>CEU - Centro Unificado Educacional Parque Bristol</title>
     	<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
     	<link rel="stylesheet" href="{% static '/styles/ceu_estilo.css' %}">
-=======
-    	<link rel="stylesheet" href="ceu_estilo.css">
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=poppins">	
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	</head>
 	<body>
 
@@ -23,19 +18,11 @@
 			<div id="topo-div">
 				<!-- Logo -->
 				<div id="topo-logo-div">
-<<<<<<< HEAD
 					<img src="{% static '/assets/imagens/logo_ceu_retangular.png' %}">
 				</div>
 				<div id="topo-config-div">
 					<span class="baixo-esq"><img src="{% static '/assets/imagens/icone_home.png' %}">&nbsp;/ Criar usuário ( Dados médicos ) > Passo 3 de 4</span>
 		  			<span class="alto-dir"><a href="#"><img src="{% static '/assets/imagens/icone_config.png' %}"></a><a href="{% url 'conta' %}"><img src="{% static '/assets/imagens/icone_sair.png' %}"></a></span>
-=======
-					<img src="img/logo_ceu_retangular.png">
-				</div>
-				<div id="topo-config-div">
-					<span class="baixo-esq"><img src="img/icone_home.png">&nbsp;/ Criar usuário ( Dados médicos ) > Passo 3 de 4</span>
-		  			<span class="alto-dir"><a href="#"><img src="img/icone_config.png"></a><a href="#"><img src="img/icone_sair.png"></a></span>
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 				</div>
 			</div>		
 
@@ -43,20 +30,16 @@
 				<!-- Menu -->
 				<div id="main-menu-div">					
 					<nav>
-<<<<<<< HEAD
 						<a href="{% url 'passo_um' %}" class="menu"><img src="{% static '/assets/imagens/btn_criar_usuario.png' %}"></a>
 						<a href="{% url 'buscar_usuario' %}"  class="menu"><img src="{% static '/assets/imagens/btn_buscar_usuario.png' %}"></a>
-=======
-						<a href="#" class="menu"><img src="img/btn_criar_usuario.png"></a>
-						<a href="#" class="menu"><img src="img/btn_buscar_usuario.png"></a>
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 					</nav>
 				</div>
 				
 				<!-- Conteúdo da página -->
 				<div id="main-area-div">
 					<span class="area">
-						<form>
+						<form method="POST" action="{% url 'passo_tres' %}">
+							{% csrf_token %}
 							<div class="box">
 								<span>Campos marcados com * são obrigatórios.</span>
 							</div>
@@ -105,12 +88,12 @@
 								</div>		
 							
 								<div class="box">
-									<label for="tratamento_médico">Faz tratamento médico ou usa medicamentos?*</label>
+									<label for="tratamento_medico">Faz tratamento médico ou usa medicamentos?*</label>
 									<div class="radio-container">
-										<label><input type="radio" name="tratamento_médico" value="enabled" checked>Sim</label>
-										<label><input type="radio" name="tratamento_médico" value="disabled">Não</label>
+										<label><input type="radio" name="tratamento_medico" value="enabled" checked>Sim</label>
+										<label><input type="radio" name="tratamento_medico" value="disabled">Não</label>
 									</div>
-									<textarea id="tratamento_médico" name="tratamento_médico" rows="5" maxlength="400" style="resize: none" placeholder="Preencha este campo se a resposta for 'Sim'."></textarea>
+									<textarea id="tratamento_medico" name="tratamento_medico" rows="5" maxlength="400" style="resize: none" placeholder="Preencha este campo se a resposta for 'Sim'."></textarea>
 								</div>
 						
 								<div class="box">
@@ -134,13 +117,8 @@
 
 							<div class="container3">
 								<div class="box3">
-<<<<<<< HEAD
-									<button class="botao_pequeno" type="button" onclick="passo1()">Primeiro passo</button>
-									<button class="botao_pequeno" type="button" onclick="passo4()">Próximo</button>
-=======
 									<button class="botao_pequeno" type="button">Primeiro passo</button>
-									<button class="botao_pequeno" type="button">Passo anterior</button>
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
+									<button class="botao_pequeno" type="submit">Próximo</button>
 									<button class="botao_pequeno" type="button">Gravar</button>
 								</div>
 							</div>
@@ -159,7 +137,6 @@
 					textarea.disabled = (radioButton.value === 'disabled');
 			  	});
 			});
-<<<<<<< HEAD
 
 			function passo4() {
 
@@ -173,8 +150,6 @@
 
 			}		
 
-=======
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 		</script>	
 			
 	</body>

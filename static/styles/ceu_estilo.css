@@ -59,11 +59,7 @@ fieldset {
 }
 
 /* Botões */
-<<<<<<< HEAD
 .botao_grande, .botao_pequeno {
-=======
-.botao_grande, .botao_pequeno{
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
     display:flex;
     justify-content:center;
     border:none;
@@ -132,10 +128,7 @@ fieldset {
     width:30%;
 }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 input[type=text], input[type=password], input[type=email], input[type=date], textarea, select {
     width:100%;
     padding:5px;

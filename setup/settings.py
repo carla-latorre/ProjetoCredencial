@@ -91,15 +91,12 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
-<<<<<<< HEAD
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.GerenciaFuncionario',
 ]
 
 AUTH_USER_MODEL = 'criarConta.Funcionario'
 
-=======
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

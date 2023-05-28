@@ -25,12 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login.urls')),
     path('', include('criarConta.urls')),
-<<<<<<< HEAD
     path('', include('buscaUsuario.urls')),
     path('', include('cadastroUsuario.urls')),
-=======
-    path('', include('buscaUsuario.urls'))
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

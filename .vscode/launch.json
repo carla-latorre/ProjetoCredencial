@@ -2,17 +2,16 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Python: Django",
+			"name": "CREDENCIAL Python: Django",
 			"type": "python",
 			"request": "launch",
-			"program": "${workspaceFolder}\\manage.py",
+			"program": "C:\\DjangoProjetos\\ProjetoCredencial\\manage.py",
 			"args": [
-				"runserver",
-				"--noreload"
+				"runserver"
 			],
-			"django": true
-			
-		}
-	
+			"django": true,
+			"justMyCode": true
+		},
+		
 	]
 }

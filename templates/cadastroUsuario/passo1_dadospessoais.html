@@ -1,22 +1,15 @@
-<<<<<<< HEAD
 {% load static %}
 
-=======
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 <!DOCTYPE html>
 <html>
 	<head>
     	<title>CEU - Centro Unificado Educacional Parque Bristol</title>
     	<meta charset="UTF-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
     	<link rel="stylesheet" href="{% static '/styles/ceu_estilo.css' %}">
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=poppins">
-=======
-    	<link rel="stylesheet" href="ceu_estilo.css">
-		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=poppins">
-		<script src="validacao.js"></script>	
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<div id="wrapper-div">
@@ -24,19 +17,11 @@
 			<div id="topo-div">
 				<!-- Logo -->
 				<div id="topo-logo-div">
-<<<<<<< HEAD
 					<img src="{% static '/assets/imagens/logo_ceu_retangular.png' %}">
 				</div>
 				<div id="topo-config-div">
 					<span class="baixo-esq"><img src="{% static '/assets/imagens/icone_home.png' %}">&nbsp;/ Criar usuário ( Dados pessoais ) > Passo 1 de 4</span>					
 		  			<span class="alto-dir"><a href="#"><img src="{% static '/assets/imagens/icone_config.png' %}"></a><a href="{% url 'conta' %}"><img src="{% static '/assets/imagens/icone_sair.png' %}"></a></span>
-=======
-					<img src="img/logo_ceu_retangular.png">
-				</div>
-				<div id="topo-config-div">
-					<span class="baixo-esq"><img src="img/icone_home.png">&nbsp;/ Criar usuário ( Dados pessoais ) > Passo 1 de 4</span>					
-		  			<span class="alto-dir"><a href="#"><img src="img/icone_config.png"></a><a href="#"><img src="img/icone_sair.png"></a></span>
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 				</div>
 			</div>		
 
@@ -44,20 +29,16 @@
 				<!-- Menu -->
 				<div id="main-menu-div">					
 					<nav>
-<<<<<<< HEAD
 						<a href="{% url 'passo_um' %}" class="menu"><img src="{% static '/assets/imagens/btn_criar_usuario.png' %}"></a>
 						<a href="{% url 'buscar_usuario' %}" class="menu"><img src="{% static '/assets/imagens/btn_buscar_usuario.png' %}"></a>
-=======
-						<a href="#" class="menu"><img src="img/btn_criar_usuario.png"></a>
-						<a href="#" class="menu"><img src="img/btn_buscar_usuario.png"></a>
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
 					</nav>
 				</div>
 				
 				<!-- Conteúdo da página -->
 				<div id="main-area-div">
 					<span class="area">
-						<form>
+						<form method="POST" action="{% url 'passo_um' %}">
+							{% csrf_token %}
 							<div class="container">
 
 								<div class="box">
@@ -70,17 +51,17 @@
 
 								<div class="box">
 									<label for="numero_cadastro">Número de cadastro*</label>
-									<input type="text" id="numero_cadastro" name="numero_cadastro" required>
+									<input type="text" id="numero_cadastro" name="numero_cadastro"  >
 								</div>
 								
 								<div class="box">
 									<label for="eol">EOL*</label>
-									<input type="text" id="eol" name="eol" required>
+									<input type="text" id="eol" name="eol"  >
 								</div>
 								
 								<div class="box">
 									<label for="nome_completo">Nome completo*</label>
-									<input type="text" id="nome_completo" name="nome_completo" required>
+									<input type="text" id="nome_completo" name="nome_completo"  >
 								</div>
 						
 								<div class="box">
@@ -91,7 +72,7 @@
 								
 							<div class="box">
 								<label for="raca_cor">Raça/cor*</label>
-								<select id="raca_cor" name="raca_cor" required>
+								<select id="raca_cor" name="raca_cor"  >
 									<option disabled="disabled" selected="selected">Selecione raça/cor</option>
 									<option value="amarela">Amarela</option>
 									<option value="branca">Branca</option>
@@ -104,12 +85,12 @@
 							<div class="container">	
 								<div class="box">
 									<label for="cidade">Natural de (cidade)*</label>
-									<input type="text" id="cidade" name="cidade" required>		
+									<input type="text" id="cidade" name="cidade"  >		
 								</div>	
 						
 								<div class="box">
 									<label for="uf">UF*</label>
-									<select id="uf" name="uf" required>
+									<select id="uf" name="uf"  >
 										<option disabled="disabled" selected="selected">Selecione a Unidade Federativa</option>
 										<option value="AC">Acre (AC)</option>
 										<option value="AL">Alagoas (AL)</option>
@@ -143,17 +124,17 @@
 						
 								<div class="box">
 									<label for="data_nascimento">Data de nascimento*</label>
-									<input type="date" id="data_nascimento" name="data_nascimento" required>		
+									<input type="date" id="data_nascimento" name="data_nascimento"  >		
 								</div>	
 						
 								<div class="box">
 									<label for="idade">Idade*</label>
-									<input type="text" id="idade" name="idade" required>		
+									<input type="text" id="idade" name="idade"  >		
 								</div>
 						
 								<div class="box">
 									<label for="certidao_nascimento">Certidão de nascimento</label>
-									<input type="text" id="certidao_nascimento" name="certidao_nascimento" required>		
+									<input type="text" id="certidao_nascimento" name="certidao_nascimento"  >		
 								</div>	
 								
 								<div class="container2">
@@ -170,12 +151,12 @@
 						
 								<div class="box">
 									<label for="rg">RG</label>
-									<input type="text" id="rg" name="rg" required>		
+									<input type="text" id="rg" name="rg"  >		
 								</div>
 						
 								<div class="box">
 									<label for="data_expedicao">Data de expedição</label>
-									<input type="date" id="data_expedicao" name="data_expedicao" required>		
+									<input type="date" id="data_expedicao" name="data_expedicao" >		
 								</div>	
 							</div>
 							
@@ -196,11 +177,7 @@
 							<div class="container3">
 								<div class="box3">
 									<button class="botao_pequeno" type="button">Primeiro passo</button>
-<<<<<<< HEAD
-									<button class="botao_pequeno" type="button" onclick="passo2()" >Próximo</button>
-=======
-									<button class="botao_pequeno" type="button">Passo anterior</button>
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
+									<button class="botao_pequeno" type="submit">Próximo</button>
 									<button class="botao_pequeno" type="button">Gravar</button>
 								</div>
 							</div>
@@ -218,15 +195,17 @@
 					textarea.disabled = (radioButton.value === 'disabled');
 			  	});
 			});
-<<<<<<< HEAD
 
 			function passo2(){
 
 				window.location.href = "{% url 'passo_dois' %}"
 
 			}
-=======
->>>>>>> 6fc9a8ee62cef2fd5ef5db37afcb608da0febef4
+
+			function gravar(){
+				windows.location.href = "{% url 'passo_quatro' %}"
+			}
+
 		</script>		
 	</body>
 </html>
