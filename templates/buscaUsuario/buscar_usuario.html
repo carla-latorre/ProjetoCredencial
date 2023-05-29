@@ -12,6 +12,21 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">	
 		<script src="https://kit.fontawesome.com/3e6ed66707.js" crossorigin="anonymous"></script>	
+
+		<style> .busca-input {  
+			background-image: url("/static/styles/icone_busca.png");
+			background-repeat:no-repeat;
+			background-position:99%;
+			background-size:20px 20px;
+			cursor:pointer;
+		}
+		.text-align-left {
+  			text-align: left;
+			}
+		
+		
+		
+		</style>
 	</head>
 	<body>
 
@@ -24,7 +39,7 @@
 				</div>
 				<div id="topo-config-div">
 					<span class="baixo-esq"><img src="{% static '/assets/imagens/icone_home.png' %}">&nbsp;/ Buscar usuário</span>
-		  			<span class="alto-dir"><a href="#"><img src="{% static '/assets/imagens/icone_config.png' %}"></a><a href="{% url 'conta' %}"><img src="{% static '/assets/imagens/icone_sair.png' %}"></a></span>
+		  			<span class="alto-dir"><a href="{% url 'altera_usuario' user_id=request.session.user_id %}"><img src="{% static '/assets/imagens/icone_config.png' %}"></a><a href="{% url 'conta' %}"><img src="{% static '/assets/imagens/icone_sair.png' %}"></a></span>
 				</div>
 			</div>		
 
@@ -41,20 +56,15 @@
 				<div id="main-area-div">
 					<span class="area">
 						<div class="container">
-							<form method="POST" action = "{% url 'pesquisa' %}">
+							<form method="GET" action = "{% url 'pesquisa' %}" id="form-busca">
 								{% csrf_token %}
-								
-									<input type="search" placeholder="Busca por nome" size="100" name="nome_completo" class = 'busca-input'>
-									<button type="submit" class="btn">
-										<span class="btn_icone"><i class="fa-solid fa-search" style="color: #ffffff;"></i></span>
-										<span class="btn_texto">Buscar</span>
-									</button>																							
+								<input type="search" placeholder="digite o nome" size="55" id="consulta" name="nome_completo" value="{{ request.session.input_value|default:'' }}" class="busca-input">																													
 							</form>
 							{% if erro %}
 
 							<table class="cor_linhas_alternadas">
 								<tr>
-									<th style="width:10%;">EOL</th>
+									<th style="width:15%;">EOL</th>
 									<th style="width:30%;">NOME COMPLETO</th>
 									<th>AÇÕES</th>									
 								</tr>
@@ -68,13 +78,13 @@
 							<br>
 							<table class="cor_linhas_alternadas">
 								<tr>
-									<th style="width:10%;">EOL</th>
+									<th style="width:15%;">EOL</th>
 									<th style="width:30%;">NOME COMPLETO</th>
 									<th>AÇÕES</th>									
 								</tr>
 								{% for usuario in usuarios %}
 								<tr>
-									<td>{{ usuario.eol }}</td>
+									<td  class="text-align-left">{{ usuario.eol.strip }}</td>
 									<td> {{ usuario.nome }} </td>
 									<td>
 										<div class="botoes">
@@ -90,10 +100,12 @@
 												<span class="btn_texto">editar usuário</span>
 											</button>
 
-											<button type="button" class="btn">
-												<span class="btn_icone"><i class="fa-solid fa-user-minus" style="color: #ffffff;"></i></span>
-												<span class="btn_texto">excluir usuário</span>
-											</button>
+											<a href="{% url 'exclui_usuario' user_id=usuario.idusuario %}"> 
+												<button type="button" class="btn">
+													<span class="btn_icone"><i class="fa-solid fa-user-minus" style="color: #ffffff;"></i></span>
+													<span class="btn_texto">excluir usuário</span>
+												</button>
+											</a>
 										</div>
 									</td>
 								</tr>
@@ -105,6 +117,15 @@
 				</div>
 			</div>				
 		</div>
-			
+		<script>
+			document.getElementById("form-busca").addEventListener("keyup", function(event) {
+				if (event.key === "Enter") {
+				  event.preventDefault();
+				  var form = document.getElementById("form-busca");
+				  var buscar = form.elements.consulta.value;
+				  window.location.href = "/?buscar" + encodeURIComponent(buscar);
+				}
+			});
+			</script>
 	</body>
 </html>

@@ -44,7 +44,7 @@
 
 						<label for="senha2" class="fonte_media">Repita a senha</label>
 						<input type="password" id="senha2" name="senha2" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" required>						
-						{{ erros.senha }}
+						<span style="color:red "> {{erros.senha}} </span>
 						<input type="submit" value="Criar conta" class="botao_grande">
 					</fieldset>
 				</form>

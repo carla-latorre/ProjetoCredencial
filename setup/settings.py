@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'login.apps.LoginConfig',           #sempre incluir o app que foi criado no projeto, referenciando o nome da classe criada no apps.py
     'criarConta.apps.CriarcontaConfig', #sempre incluir o app que foi criado no projeto, referenciando o nome da classe criada no apps.py
     'buscaUsuario.apps.BuscausuarioConfig',
-    'cadastroUsuario.apps.CadastrousuarioConfig'
+    'cadastroUsuario.apps.CadastrousuarioConfig',
+    'alterarConta.apps.AlterarcontaConfig'
 ]
 
 MIDDLEWARE = [

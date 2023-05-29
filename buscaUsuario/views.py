@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from criarConta.models import Funcionario
 from cadastroUsuario.models import Usuario
+from django.contrib import messages
 
 def buscaUsuario(request):
     return render(request, 'buscaUsuario/buscar_usuario.html')
 
 def Pesquisa(request):
 
-    if request.method == 'POST':
-        nome = request.POST.get('nome_completo')
+    if request.method == 'GET':
+        nome = request.GET.get('nome_completo')
         
         if nome:
 
@@ -31,3 +31,9 @@ def Pesquisa(request):
 def credencial(request, user_id):
     usuario = get_object_or_404(Usuario, idusuario=user_id)
     return render (request, 'credencial/credencial.html', {'usuario': usuario})
+
+def excluiUsuario(request, user_id):
+    usuario = get_object_or_404(Usuario, idusuario=user_id)
+    usuario.delete()
+    messages.success(request, 'Usuário excluído com sucesso.')
+    return render (request, 'buscaUsuario/buscar_usuario.html', {'usuario': usuario })

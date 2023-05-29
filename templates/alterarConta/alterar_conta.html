@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title>CEU - Centro Unificado Educacional Parque Bristol</title>
+    	<meta charset="UTF-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="{% static '/styles/ceu_estilo.css' %}">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=poppins">	
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div id="wrapper-div">
+
+			<div id="topo-div">
+				<!-- Logo -->
+				<div id="topo-logo-div">
+					<img src="{% static '/assets/imagens/logo_ceu_retangular.png' %}">
+				</div>
+				<div id="topo-config-div">
+
+					<span class="baixo-esq"><img src="{% static '/assets/imagens/icone_home.png' %}">&nbsp;/ Alterar conta</span>
+					<span class="alto-dir">
+						<a href="{% url 'altera_usuario' user_id=request.session.user_id %}"><img src="{% static '/assets/imagens/icone_config.png' %}"></a>
+						<a href="{% url 'passo_um' %}"><img src="{% static '/assets/imagens/icone_sair.png' %}"></a>
+					</span>
+				</div>
+			</div>		
+
+			<div id="main-div">
+				<!-- Menu -->
+				<div id="main-menu-div">					
+					<nav>
+						<a href="{% url 'passo_um' %}" class="menu"><img src="{% static '/assets/imagens/btn_criar_usuario.png' %}"></a>
+						<a href="{% url 'buscar_usuario' %}" class="menu"><img src="{% static '/assets/imagens/btn_buscar_usuario.png' %}"></a>
+					</nav>
+				</div>
+				
+				<!-- Conteúdo da página -->
+				<div id="main-area-div">
+					<span class="area">
+						<form method="POST" action="{% url 'salvar_alteracoes' usuario.idfunc %}">
+							{% csrf_token %}
+							<div class="container">
+
+								<div class="box4">
+									<label for="registro_funcional" class="fonte_media">Registro Funcional</label>						
+									<span class="tooltip" data-tooltip="O Registro Funcional deve conter apenas números.">?</span>									
+									<input type="text" id="registro_funcional" value="{{ usuario.regfuncional }}" name="registro_funcional" maxlength="10" pattern="^[0-9]{1,10}$" readonly>						
+								</div>
+
+								<div class="box4">
+									<span>&nbsp;</span>
+								</div>
+								
+								<div class="box4">
+									<label for="nome_completo" class="fonte_media">Nome completo</label>
+									<input type="text" id="nome_completo" value="{{ usuario.nome }}" name="nome_completo" maxlength="40" readonly>						
+								</div>						
+								
+								<div class="box4">
+									<label for="email" class="fonte_media">Endereço de email</label>
+									<input type="email" id="email" value="{{ usuario.email }}" name="email" maxlength="30" readonly>
+								</div>									
+								
+								<div class="box4">
+									<label for="senha1" class="fonte_media">Senha</label>
+									<span class="tooltip" data-tooltip="A senha deve conter no mínimo 8 e no máximo 15 caracteres. Deve incluir pelo menos uma letra maiúscula, uma letra minúscula, um número e um dos seguintes caracteres especiais: @ $ ! % * ? &">?</span>
+									<input type="password" id="senha1" name="senha1" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" required>
+								</div>								
+
+								<div class="box4">
+									<label for="senha2" class="fonte_media">Repita a senha</label>
+									<input type="password" id="senha2" name="senha2" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" required>
+								</div>					  
+
+							<div class="container3">
+								<div class="box4">
+									<input type="submit" value="Alterar conta" class="botao_grande">
+								</div>
+							</div>
+						</form>
+					</span>					
+				</div>
+			</div>				
+		</div>
+	</body>
+</html>
